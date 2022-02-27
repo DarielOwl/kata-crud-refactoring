@@ -1,47 +1,51 @@
 package co.com.sofka.crud.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Todo {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private boolean completed;
-    private String groupListId;
 
-    public String getGroupListId() {
-        return groupListId;
-    }
+    @ManyToOne
+    @JoinColumn(name = "idGroupTodos", referencedColumnName = "idGroupTodos")
+    private GroupTodos groupTodos;
 
-    public void setGroupListId(String groupListId) {
-        this.groupListId = groupListId;
-    }
-
+    //Getters
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public boolean isCompleted() {
         return completed;
     }
 
+    public GroupTodos getGroupTodos() {
+        return groupTodos;
+    }
+
+    //Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public void setGroupTodos(GroupTodos groupTodos) {
+        this.groupTodos = groupTodos;
     }
 }
