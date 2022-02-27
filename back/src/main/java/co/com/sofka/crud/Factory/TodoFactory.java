@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//Fabrica de Todos
 @Component
 public class TodoFactory {
 
@@ -33,7 +34,17 @@ public class TodoFactory {
         return todos_Dto;
     }
 
+    //Mapper para convertir de todoDto a un todo
+    public Todo createTodo(TodoDto todo_dto){
+        Todo todo = new Todo(); //Creamos el objeto todo
 
+        //Le setiamos los valores
+        todo.setId(todo_dto.getId());
+        todo.setName(todo_dto.getName());
+        todo.setCompleted(todo_dto.isCompleted());
+
+        return todo; //Y retornamos el nuevo objeto
+    }
 
 
 }

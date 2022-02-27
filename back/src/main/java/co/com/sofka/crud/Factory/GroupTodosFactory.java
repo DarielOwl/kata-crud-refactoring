@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+//Fabrica de GroupTodos
 @Component
 public class GroupTodosFactory {
 
@@ -40,5 +40,17 @@ public class GroupTodosFactory {
         return groups_Dto;
     }
 
+    //Creamos el grupo a partir del grupoDto enviado del fronted
+    public GroupTodos createGroupTodos(GroupTodosDto groupTodosDto){
+
+        GroupTodos groupTodos = new GroupTodos(); //Creamos el grupo
+
+        //Le setiamos los datos del mismo
+        groupTodos.setIdGroupTodos(groupTodosDto.getIdGroupTodos());
+        groupTodos.setName(groupTodosDto.getName());
+        groupTodos.setTodos(new ArrayList<>());
+
+        return groupTodos; //Devolvemos el nuevo grupo
+    }
 
 }

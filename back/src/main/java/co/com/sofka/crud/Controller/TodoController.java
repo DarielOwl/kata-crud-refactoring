@@ -1,9 +1,12 @@
 package co.com.sofka.crud.Controller;
 
+import co.com.sofka.crud.Dtos.TodoDto;
 import co.com.sofka.crud.Model.Todo;
 import co.com.sofka.crud.Services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -12,8 +15,9 @@ public class TodoController {
     @Autowired
     private TodoService service;
 
+    // 1) Mostrar todos los Todos
     @GetMapping(value = "api/todos")
-    public Iterable<Todo> list(){
+    public List<TodoDto> list(){
         return service.list();
     }
     
